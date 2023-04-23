@@ -5,7 +5,7 @@ class CreateStudentHomeworks < ActiveRecord::Migration[6.1]
       t.datetime :graded_at
       t.text :attachment
       t.text :note
-      t.integer :grade
+      t.string :grade
       t.belongs_to :student, null: false
       t.belongs_to :homework, null: false
 
