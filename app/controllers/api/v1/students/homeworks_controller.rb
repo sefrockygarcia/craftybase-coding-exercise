@@ -16,12 +16,12 @@ class Api::V1::Students::HomeworksController < ApplicationController
   # GET /api/v1/students/:student_id/homeworks
   def index
     student = User.student.find(params[:student_id])
-    homeworks = student.student_homeworks.includes(:homework)
+    student_homeworks = student.student_homeworks.includes(:homework)
 
     # Apply filters if provided
-    homeworks = homeworks.by_grade(params[:grade]) if params[:grade].present?
-    homeworks = homeworks.by_title(params[:title]) if params[:title].present?
+    student_homeworks = student_homeworks.by_grade(params[:grade]) if params[:grade].present?
+    student_homeworks = student_homeworks.by_title(params[:title]) if params[:title].present?
 
-    render json: homeworks.as_json(include: { homework: { only: :title } }), status: :ok
+    render json: student_homeworks.as_json(include: { homework: { only: :title } }), status: :ok
   end
 end
