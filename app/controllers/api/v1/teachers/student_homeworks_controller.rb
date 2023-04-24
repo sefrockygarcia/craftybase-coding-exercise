@@ -10,9 +10,7 @@ class Api::V1::Teachers::StudentHomeworksController < ApplicationController
     end
 
     if params[:from].present? && params[:to].present?
-      from_date = Date.parse(params[:from])
-      to_date = Date.parse(params[:to])
-      homeworks = homeworks.submitted_between(from_date, to_date)
+      homeworks = homeworks.submitted_between(params[:from], params[:to])
     end
 
     if params[:student_name].present?

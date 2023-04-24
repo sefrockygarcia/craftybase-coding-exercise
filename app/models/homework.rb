@@ -8,7 +8,7 @@ class Homework < ApplicationRecord
 
   scope :submitted_between, ->(from_date, to_date) {
     joins(:student_homeworks)
-    .where('student_homeworks.submitted_at BETWEEN ? AND ?', from_date, to_date)
+    .where('student_homeworks.submitted_at BETWEEN ? AND ?', Date.parse(from_date), Date.parse(to_date))
   }
 
   scope :by_student_name, ->(student_name) { 
