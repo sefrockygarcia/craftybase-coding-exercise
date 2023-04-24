@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'rack/test'
 
 class StudentHomeworkTest < ActiveSupport::TestCase
   test ".by_grade" do
@@ -17,5 +18,21 @@ class StudentHomeworkTest < ActiveSupport::TestCase
     result = StudentHomework.by_title('Math')
     assert_includes result, student_homework_1
     refute_includes result, student_homework_2
+  end
+
+  test 'should accept valid attachment' do
+    student_homework = student_homeworks(:student_homework_1)
+    valid_pdf = Rack::Test::UploadedFile.new('test/fixtures/files/valid.pdf', 'application/pdf')
+
+    student_homework.attachment.attach(valid_pdf)
+    assert student_homework.valid?
+  end
+
+  test 'should not accept invalid attachment' do
+    student_homework = student_homeworks(:student_homework_1)
+    invalid_txt = Rack::Test::UploadedFile.new('test/fixtures/files/invalid.txt', 'text/plain')
+
+    student_homework.attachment.attach(invalid_txt)
+    assert_not student_homework.valid?
   end
 end
