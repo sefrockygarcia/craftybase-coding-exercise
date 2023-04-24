@@ -1,0 +1,13 @@
+student_homework_1:
+  id: 1
+  homework_id: 1
+  student_id: 2
+  submitted_at: "2023-04-22 00:00:00"
+  grade: A
+
+student_homework_2:
+  id: 2
+  homework_id: 2
+  student_id: 2
+  submitted_at: "2023-04-18 00:00:00"
+  grade: C
