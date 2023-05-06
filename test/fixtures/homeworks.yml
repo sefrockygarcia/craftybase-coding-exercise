@@ -1,0 +1,9 @@
+homework_1:
+  id: 1
+  title: "Math Homework"
+  teacher_id: 1
+
+homework_2:
+  id: 2
+  title: "Science Homework"
+  teacher_id: 1

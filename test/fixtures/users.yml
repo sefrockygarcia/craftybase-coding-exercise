@@ -1,0 +1,9 @@
+teacher_1:
+  id: 1
+  name: "John Doe"
+  role: "teacher"
+
+student_1:
+  id: 2
+  name: "Alice Smith"
+  role: "student"
